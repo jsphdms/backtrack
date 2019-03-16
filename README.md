@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-backtrack
-=========
+backtrack <img src = "man/figures/logo.svg" align = "right" height = 150/>
+==========================================================================
+
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 This R package implements backtracking algorithms to solve some of [these problems](https://www.geeksforgeeks.org/backtracking-algorithms/).
 
