@@ -105,3 +105,40 @@ kt_solve_recursively <- function(N = 8, position = c(i = 1, j = 1),
   close(pb)
 
 }
+
+#' @export
+kt_solution_to_df <- function(solution) {
+  stopifnot(is.matrix(solution),
+            nrow(solution) == ncol(solution))
+
+  N <- nrow(solution)
+
+  df <- data.frame(i = rep(NA, N ^ 2),
+                   j = NA,
+                   order = NA)
+
+  for (i in seq(N)) {
+    for (j in seq(N)) {
+
+      current_row <- min(which(is.na(df[["i"]])))
+      df[[quote(i)]][[current_row]] <- i
+      df[[quote(j)]][[current_row]] <- j
+      df[["order"]][[current_row]] <- solution[i, j]
+
+    }
+  }
+
+  return(df[with(df, order(order)), ])
+
+}
+
+#' @export
+kt_plot_solution <- function(solution_df) {
+  stopifnot(is.data.frame(solution_df),
+            names(solution_df) == c("i", "j", "order"))
+
+  kt_plot <- ggplot2::ggplot(solution_df, ggplot2::aes(x = j, y = i)) +
+    ggplot2::geom_path()
+
+  return(kt_plot)
+}
